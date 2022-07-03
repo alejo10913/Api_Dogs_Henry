@@ -3,20 +3,55 @@ const axios = require('axios');
 require('dotenv').config()
 const YOUR_API_KEY = process.env
 
-let getall = async (req, res) => {
+let getall = async () => {
     try {
         let getAllDogs = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`);
-        getAllDogs = getAllDogs.data;
-    
-        if(!getAllDogs){
-            return res.status(400).send('no hay perros')
-        }
-        res.status(200).send({getAllDogs})
+        getAllDogs = getAllDogs.data.map(e => {
+            return {
+                id: e.id, 
+                name: e.name,
+                weight: e.weight.metric,
+                height: e.height.metric,
+                lefe_span: e.life_span, 
+                image: e.image.url,
+                temperament: e.temperament
+            }
+        });
+        return getAllDogs;
         
         } catch (error) {
-            console.log(error)
+            return error
         }
 }
+
+
+// let getall = async (req, res) => {
+//     try {
+//         let getAllDogs = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`);
+//         getAllDogs = getAllDogs.data;
+    
+//         if(!getAllDogs){
+//             return res.status(400).send('no hay perros')
+//         }
+//         res.status(200).send({getAllDogs})
+        
+//         } catch (error) {
+//             console.log(error)
+//         }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let createdog = async (req, res) =>{
     const {name, height, weight, life_span} = req.body;
