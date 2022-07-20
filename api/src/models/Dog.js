@@ -16,19 +16,32 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    heigh: {
-      type: DataTypes.STRING,
+    height: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
     weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     life_span: {
       type: DataTypes.STRING,
       allowNull: false
     },
-  });
+    image: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    }
+  },
+  {
+    timestamps: false,
+  }
+  );
 };
 
 // ID *

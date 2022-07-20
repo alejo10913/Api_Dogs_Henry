@@ -32,7 +32,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Dog, Temperament} = sequelize.models;
 
-console.log(sequelize.models)
 
 // Aca vendrian las relaciones
 
