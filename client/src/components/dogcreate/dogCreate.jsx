@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, createDogs} from "../../actions";
 import { Link} from "react-router-dom";
+import '../dogcreate/dogCreate.css'
 
 function validate(input) {
     let errors = {};
@@ -77,7 +78,7 @@ export default function DogCreate() {
     const dispatch = useDispatch();
     const history = useHistory();
     const temperaments = useSelector((state) => state.temperaments);
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([""]);
 
     //Obtener todos los temperamentos
     useEffect(() => {
@@ -137,13 +138,19 @@ export default function DogCreate() {
     }
 
     return (
-        <div>
+        <div className="container">
+            <div className="container2">
+                <h4>ingresa la informacion requerida</h4>
+            
             <form onSubmit={handleSubmit}>
+{/* --------------------------nombre------------------------------------- */}
                 <div>
                     <label>Nombre:  </label>
                     <input type="text" value={input.name} name="name" onChange={handleChange} />
                     {errors.name && <p>{errors.name}</p>}
                 </div>
+
+{/* --------------------------alturas------------------------------------- */}
                 <div>
                     <label> Altura minima:  </label>
                     <input type="text" value={input.height_min} name="height_min" onChange={handleChange} />
@@ -154,6 +161,8 @@ export default function DogCreate() {
                     <input type="text" value={input.height_max} name="height_max" onChange={handleChange} />
                     {errors.height_max && <p>{errors.height_max}</p>}
                 </div>
+
+{/* --------------------------pesos------------------------------------- */}                
                 <div>
                     <label> Peso minimo:  </label>
                     <input type="text" value={input.weight_min} name="weight_min" onChange={handleChange} />
@@ -164,21 +173,26 @@ export default function DogCreate() {
                     <input type="text" value={input.weight_max} name="weight_max" onChange={handleChange} />
                     {errors.weight_max && <p>{errors.weight_max}</p>}
                 </div>
+
+{/* --------------------------años de vida ------------------------------------ */}
                 <div>
                     <label> Años de vida:  </label>
                     <input type="text" value={input.life_span} name="life_span" onChange={handleChange} />
                     {errors.life_span && <p>{errors.life_span}</p>}
                 </div>
+
+{/* --------------------------imagen------------------------------------- */}
                 <div>
                     <label> Imagen:  </label>
                     <input type="text" value={input.image} name="image" onChange={handleChange} />
                     {errors.image && <p>{errors.image}</p>}
                 </div>
 
+{/* ---------------------------------------------------------------------- */}
                 <select onChange={(e) => handleSelect(e)} defaultValue="">
                     <option value="" disabled>Selecciona una opción</option>
                     {temperaments?.map((temp) => (
-                        <option value={temp.id}>{temp.name}</option>
+                    <option value={temp.id}>{temp.name}</option>
                     ))}
                 </select>
 
@@ -193,12 +207,14 @@ export default function DogCreate() {
                     <p>{el.name}</p>
                     <button onClick={() => handleDelete(el.id)}>X</button>
                 </div>
+                
             ))}
-
+        
 
         <Link to = '/home'>
-        <button>volver</button> 
+        <button>volver a pagina principal</button> 
         </Link>
+        </div>
         </div>
     );
 }

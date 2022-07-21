@@ -1,0 +1,21 @@
+.navBar{
+    
+    display: flex;
+    flex-direction:column;
+    background-image: url(https://img.freepik.com/psd-gratis/retrato-grupo-adorables-cachorros_53876-73962.jpg?w=2000);
+    width: 100%;
+    height: 400px;
+    background-size:contain ;
+    color: bisque;
+}
+
+.title{
+ color: black;
+}
+
+
+.subtitle{
+color: black;
+
+
+}

@@ -1,11 +1,12 @@
 ul {
     list-style-type: none;
     text-align: center
+  
   }
   
   li {
-    background-color: #F6E3CA;
-    border: #D7C8B6 2px solid;
+    background-color:rgb(46, 224, 46) #e75811;
+    /* border: #353531; */
     display: inline;
     margin-right: 10px;
   }
@@ -16,7 +17,7 @@ ul {
     text-decoration: none;
   }
   
-  a:hover {
+  li :hover {
     background-color: white;
     color: #D7C8B6;
   }

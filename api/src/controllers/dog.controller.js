@@ -16,7 +16,8 @@ let getall = async () => {
                 life_span: e.life_span, 
                 image: e.image.url,
                 temperaments: e.temperament,
-                createdInDb: false
+                createdInDb: false,
+                
 
             }
         });
@@ -75,53 +76,7 @@ const getallApiDb = async () => {
     
 }
 
-// const getallWQ = async (req, res) =>{
-//     const {name} = req.query
-//     let dogsTotal = await getallApiDb();
-//     if (name){
-//         let dogName = await dogsTotal.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
-//         dogName.length?
-//         dogName:
-//         "No se econtraron perros con ese nombre"
-//     }
-//     else{
-//         return dogsTotal
-//     }
-// }
-
-
-// let createDog = async (req, res) =>{
-//     const {name, height, weight, life_span, temperament} = req.body;
-
-//     try {
-//         let newDog = await Dog.create({
-//             name, 
-//             height,
-//             weight,
-//             life_span,
-//             temperament
-//         })
-        
-//         let temperamentoDB = await Temperament.findAll({
-//             where:{ name: temperament}
-//         })
-//         newDog.addTemperament(temperamentoDB)
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 module.exports = {
     getallApiDb,
 }
-
-// [ ] GET /dogs/{idRaza}:
-// Obtener el detalle de una raza de perro en particular
-// Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
-// Incluir los temperamentos asociados
-
-
-// [ ] POST /dogs:
-// Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro por body
-// // Crea una raza de perro en la base de datos relacionada con sus temperamentos

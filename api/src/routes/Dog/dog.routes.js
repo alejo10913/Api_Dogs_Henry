@@ -2,7 +2,6 @@ const {Router} = require('express')
 const router = Router()
 const {Dog, Temperament} =require('../../db');
 
-//const controller = require('../../controllers/dog.controller');
 const { getallApiDb} = require('../../controllers/dog.controller')
 
 router.get('/', async(req, res, next)=>{
@@ -21,15 +20,12 @@ router.get('/', async(req, res, next)=>{
         else{
             res.status(200).send(dogsTotal)
         }
-        // const alldogs = await  getallWQ();
-        // res.status(200).json({data:alldogs})
+
     } catch (error) {
         next (error)
         
     }
 });
-
-
 
 router.post('/', async(req, res, next) => {
     const {name, height_min, weight_min, height_max, weight_max ,life_span, temperament, image} = req.body;
@@ -42,13 +38,9 @@ router.post('/', async(req, res, next) => {
             life_span,
             image
         })
-        // let temperamentoDB = await Temperament.findAll({
-        //     where:{ name: temperament}
-        
-        // })
 
         newDog.addTemperament(temperament)
-        //newDog.addTemperament(temperamentoDB)
+
         res.status(200).send('perro creado correctamente')
     
     } catch (error) {
@@ -71,13 +63,5 @@ router.get('/:id', async(req, res, next) =>{
         next(error)
     }
 })
-
-
-
-
-
-
-//router.delete('/dogs', )
-//router.put('/dogs/:id', )
 
 module.exports = router;

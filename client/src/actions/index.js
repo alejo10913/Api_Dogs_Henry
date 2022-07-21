@@ -48,6 +48,20 @@ export function createDogs(data) {
     }
 }
 
+export function getDetail(id){
+    return async function(dispatch){
+        try {
+            let json =await axios.get("http://localhost:3001/dogs/" + id)
+            return dispatch({
+                type: 'GET_DETAILS',
+                payload: json.data
+
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 export function filterCreated(payload){
     return{
@@ -63,20 +77,7 @@ export function orderByName(payload){
     }
 }
 
-export function getDetail(id){
-    return async function(dispatch){
-        try {
-            let json =await axios.get("http://localhost:3001/dogs/" + id)
-            return dispatch({
-                type: 'GET_DETAILS',
-                payload: json.data
 
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-}
 export function orderByTemperaments(payload) {
     console.log(payload)
        return {
@@ -93,9 +94,10 @@ export function orderByTemperaments(payload) {
      }
      
      export function orderByPesoMax(payload){
-        console.log(payload)
         return {
            type: 'ORDER_BY_PESO_MAX',
            payload
         }
      }
+
+        

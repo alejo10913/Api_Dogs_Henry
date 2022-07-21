@@ -8,24 +8,15 @@ const getallTemp = async() =>{
 
 
  try {
-    const getTemperamentsDB = await Temperament.findAll();   // findAll: trae todas los atributos indiscriminadamente 
+    const getTemperamentsDB = await Temperament.findAll(); 
         if(!getTemperamentsDB.length ){
             let GetAlldogs = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)
             let repeatedTemper =GetAlldogs.data.map(dog => dog.temperament).toString().split(',')
      
             let result = [...new Set(repeatedTemper.sort())]
-         
-
-            // let result = repeatedTemper.filter((item, index)=>{
-            //     return repeatedTemper.indexOf(item) === index
-            // })  
         
-
-            // SE PUEDE USAR FINDORCREATE?
             result = result.map(item => ({ name: item }));
-            await Temperament.bulkCreate(result) // cuando se le pasa un array de datos para que sea mas rapido la creacion. solo guarda informacion que tengo en la entidad 
-            
-
+            await Temperament.bulkCreate(result)
         }
     
  } catch (error) {
@@ -34,9 +25,3 @@ const getallTemp = async() =>{
 }
 
 module.exports = {getallTemp}
-
-//findOrCreate : si lo encuentra lo devuelve, si no lo crea 
-// findByPk: le pasamos el id y trae por Pk
-// create: crea de a uno 
-// findOne: trae el primero que encuentre con el parametro que se le pase 
-

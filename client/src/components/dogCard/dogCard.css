@@ -1,0 +1,22 @@
+.cardContainer{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    align-items:center; 
+    /* background-color: rgba(164, 126, 29, 0.304); */
+    
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+
+.imagenes{
+border-radius: 20px;
+}
+
+.imagenes img{
+    height: 300px;
+    width: 350px;
+    border-radius: 20px;
+}
